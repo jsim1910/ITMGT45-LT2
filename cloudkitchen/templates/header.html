@@ -1,0 +1,22 @@
+<html>
+  <header>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+    <style>
+      .footer {
+        font-size:10px;
+      }
+    </style>
+    <h1> JSEC </h1>
+  </header>
+  <body>
+    <a href='/'>Home</a> |
+    <a href='/stalls'>Stalls</a> |
+    {% if session["user"] is defined %}
+        Welcome, {{ session["user"]["first_name"] }}.
+        <a href='/foodtray'>View Cart</a> |
+        <a href='/logout'>Logout</a>
+        {% else %}
+        <a href='/login'>Login</a>
+    {% endif %}
+
+    <p/>

@@ -1,0 +1,34 @@
+{% include "header.html" %}
+        <h1>Food Tray</h1>
+
+            {% if session["cart"] is defined %}
+            
+            <table>
+            <tr><th>Name</th><th>Quantity</th><th>Subtotal</th></tr>
+            {% for item in session["cart"].values() %}
+                        <tr><td>{{ item["name"] }}</td>
+                            <td>{{ item["qty"] }}</td>
+                            <td>{{ item["subtotal"] }}</td></tr>
+            {% endfor %}
+            <tr><td colspan=2><b>Total</b></td><td><b>{{ session["cart"].values()|sum(attribute="subtotal") }}</b></td></tr>
+            </table>
+            <table>
+           <p>Select delivery location:</p>
+           <form>
+               <select name = "dropdown">
+                   <option value = "Gonzaga" selected>Gonzaga</option>
+                   <option value = "University Dorm">Univeristy Dorm</option>
+                   <option value = "Matteo Ricci Hall">Matteo Ricci Hall</option>
+                   <option value = "Arete">Arete</option>
+                   <option value = "ISO">ISO</option>
+                   <option value = "JSEC">JSEC</option>
+                   <option value = "Xavier Hall">Xavier Hall</option>
+                   <option value = "Leong Hall">Leong Hall</option>
+               </select>
+           </form>
+        </table>
+            {% else %}
+            <div>Your cart is empty</div>
+            {% endif %}
+
+{% include "footer.html" %}
